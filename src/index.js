@@ -10,18 +10,21 @@ var myStyle ={
 }
 
 class App extends React.Component{
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.state={
-            header:"Header from props...",
-            content:"Content from props..."
+            data:[]
         }
+        this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
     }
+    forceUpdateHandler(){
+      this.forceUpdate();
+    };
     render(){
         return (
             <div>
-            <Header headerProp={this.state.header} />
-            <Content contentProp={this.state.content} />
+              <button onClick = {this.forceUpdateHandler}>Set State</button>
+              <h4>State Array: {Math.random()}</h4>
             </div>
         );
     }
